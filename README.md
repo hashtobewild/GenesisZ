@@ -9,6 +9,12 @@ Inspired by [GenesisH0](https://github.com/lhartikk/GenesisH0), but written from
 - Placeholders of the form `{BTC}`, `{ETH}` or `{ZEC}` in the `TIMESTAMP` input string get translated to the currency's latest block number and hash.
 - Uses the [`python-zcashlib`](https://github.com/sebastianst/python-zcashlib), which is a (still very much unfinished) extension of the well-known [`python-bitcoinlib`](https://github.com/petertodd/python-bitcoinlib).
 
+# Dependencies
+On Ubuntu, make sure that you have installed the python dev packages and python venv:
+```bash
+sudo apt-get install python3-venv python3-dev pypy-dev
+```
+
 ## Getting started
 Clone this repo, create a **python 3** virtualenv and install dependencies with pip:
 ```bash
@@ -22,6 +28,8 @@ pip install -r requirements.txt
 Make sure you have a working and supported equihash solver. Currently, the
 [silent army](https://github.com/mbevand/silentarmy) GPU solver (only for
 mainnet and testnet parameters `N,k=200,9`) and [tromp equihash](https://github.com/tromp/equihash) CPU solver are supported.
+
+Keep in mind that you may need to specify how many rounds to run using the -r parameter, otherwise it will default (sensibly) to only trying once.
 
 #### python-zcashlib submodule
 Note that the zcashlib is used as a submodule, since I haven't uploaded it to PyPI yet (and because it's easier for the current interdependent development). That's why you must use the `--recursive` flag during cloning. When you update this repo, don't forget to update the submodule as well, i.e., run `git pull && git submodule update` to update.
